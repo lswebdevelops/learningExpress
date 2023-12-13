@@ -9,3 +9,11 @@ app.get("/", function (req, res) {
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`);
 });
+
+// importing a module 
+
+
+const square = require("./square");
+
+console.log(square.area(4));
+console.log(square.perimeter(4));
