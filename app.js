@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get("/", function (req, res) {
+app.get("/app", function (req, res) {
   res.send("Hello World!");
 });
 
@@ -10,10 +10,13 @@ app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`);
 });
 
-// importing a module 
+// A middleware function: 
+app.all("/secret", function (req, res, next) {
+  console.log("Accessing the secret section…");
+  next(); // pass control to the next handler
+});
 
 
-const square = require("./square");
+const wiki  = require('./wiki.js');
 
-console.log(square.area(4));
-console.log(square.perimeter(4));
+app.use('/wiki', wiki)
